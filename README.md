@@ -1,5 +1,6 @@
-## Compose sample application
-### React application with a NodeJS backend and a MongoDB database
+## TODO or not TODO
+### Application where you can mark TODOs "not doing" 
+### Loosely based on the MERN stack example from Awesome compose
 
 Project structure:
 ```

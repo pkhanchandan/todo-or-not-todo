@@ -40,8 +40,11 @@ export default class App extends React.Component {
       <div className="App container">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-sm-8 col-md-8 offset-md-2">
-              <h1>Todos</h1>
+            <div className="col-xs-12 col-sm-12 col-md-8 offset-md-2">
+              <div className="header-wrapper">
+                <h1>TODO or not TODO</h1>
+                <span>A TODO app that lets you break promises</span>
+              </div>
               <div className="todo-app">
                 <AddTodo handleAddTodo={this.handleAddTodo} />
                 <TodoList todos={this.state.todos} />

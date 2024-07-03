@@ -2,23 +2,22 @@
   text-align: center;
 }
 .todo-app {
-  background-color: #efefef;
   padding: 1.2em;
   .new-todo{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    input{
-      width: 80% !important;
-    }
+    padding-bottom: 16px;
+    gap: 16px;
   }
 }
 
-//.list-group-item{
-//  &.active:hover{
-//
-//  }
-//  &active:hover{
-//    background-color: #d3d3d3;
-//  }
-//}
+.list-group-item{
+  text-align: left;
+  &.selected{
+    font-weight: bold;
+  }
+ }
+
+ .header-wrapper{
+  padding: 40px 0;
+ }

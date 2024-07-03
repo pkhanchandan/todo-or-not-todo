@@ -22,7 +22,7 @@ export default class TodoList extends React.Component {
           <li
             className={
               "list-group-item cursor-pointer " +
-              (i === this.state.activeIndex ? "active" : "")
+              (i === this.state.activeIndex ? "selected" : "")
             }
             key={i}
             onClick={() => {
