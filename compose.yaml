@@ -39,6 +39,21 @@ services:
       - express-mongo
     expose:
       - 27017
+
+  mongo-gui:
+    container_name: "mongo-viewz"
+    image: ugleiton/mongo-gui
+    restart: always
+    depends_on:
+      - mongo    
+    ports:
+      - "4321:4321"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+    networks:
+      - express-mongo
+
+
 networks:
   react-express:
   express-mongo:
