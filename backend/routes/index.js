@@ -31,6 +31,17 @@ const routes = (app) => {
       });
   });
 
+  app.delete('/api/todos/:id', async (req, res) => {
+    try {
+      const todoId = req.params.id;
+      await Todo.findByIdAndDelete(todoId);
+      res.status(200).send({ message: 'Todo deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+      res.status(500).send({ error: 'Error deleting todo' });
+    }
+  });
+
   //it's a prefix before api it is useful when you have many modules and you want to
   //differentiate b/w each module you can use this technique
   app.use("/api", router);

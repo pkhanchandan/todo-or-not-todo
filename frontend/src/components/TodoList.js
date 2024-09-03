@@ -25,11 +25,14 @@ export default class TodoList extends React.Component {
               (i === this.state.activeIndex ? "selected" : "")
             }
             key={i}
-            onClick={() => {
-              this.handleActive(i);
-            }}
           >
-            {todo.text}
+            <span onClick={() => this.handleActive(i)}>{todo.text}</span>
+            <button
+              className="btn btn-danger btn-sm float-right"
+              onClick={() => this.props.onDelete(i)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>

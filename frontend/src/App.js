@@ -17,6 +17,7 @@ export default class App extends React.Component {
     axios
       .get("/api")
       .then((response) => {
+        console.log("Loaded todos:", response.data.data);
         this.setState({
           todos: response.data.data,
         });
@@ -25,14 +26,24 @@ export default class App extends React.Component {
   }
 
   handleAddTodo = (value) => {
-    axios
-      .post("/api/todos", { text: value })
+    const todoToDelete = this.state.todos[index];
+    console.log("Deleting todo:", todoToDelete);
+    axios.delete(`/api/todos/${todoToDelete._id}`)
+    .then(() => {
+      const newTodos = this.state.todos.filter((_, i) => i !== index);
+      this.setState({ todos: newTodos });
+    })
+    .catch((e) => console.log("Error deleting todo: ", e));
+  };
+  
+  handleDeleteTodo = (index) => {
+    const todoToDelete = this.state.todos[index];
+    axios.delete(`/api/todos/${todoToDelete._id}`)
       .then(() => {
-        this.setState({
-          todos: [...this.state.todos, { text: value }],
-        });
+        const newTodos = this.state.todos.filter((_, i) => i !== index);
+        this.setState({ todos: newTodos });
       })
-      .catch((e) => console.log("Error : ", e));
+      .catch((e) => console.log("Error deleting todo: ", e));
   };
 
   render() {
@@ -47,7 +58,7 @@ export default class App extends React.Component {
               </div>
               <div className="todo-app">
                 <AddTodo handleAddTodo={this.handleAddTodo} />
-                <TodoList todos={this.state.todos} />
+                <TodoList todos={this.state.todos} onDelete={this.handleDeleteTodo} />
               </div>
             </div>
           </div>
